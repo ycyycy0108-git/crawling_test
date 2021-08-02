@@ -1,5 +1,6 @@
 import urllib.request as req # 원격 서버 url 자료 요청 
 from bs4 import BeautifulSoup # source -> html 파싱 
+import re
 
 '''
 url 쿼리를 이용한 새로운 titles 생성 코드입니다.
@@ -22,9 +23,7 @@ data = src.decode('utf-8')
 p = re.compile(r'\d\w\w-\d\d\d\d-\d\d\d\d\d\d\d-\d\w\w-\d\d\d\d-\d\d\d\d\d\d\d-\d\d\d\d\d\d\d-\d\d') 
 #. = 하나의 문자 / ^ : 문자열의 시작
 # $ (se$) : 문자열의 끝 -> case, base (o), face (x)
-address = p.findall(soup)
-
-add = address[3000:3010]
+address = p.findall(data)
 
 for i in address:
     try:
